@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Kết Nội Bộ - Xã Núi Cấm</title>
+    <title>Hệ thống giải quyết TTHC cấp Bộ ngành</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #fef0db;
             color: #333;
             display: flex;
@@ -19,70 +19,87 @@
         .container {
             width: 100%;
             max-width: 600px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: transparent;
             text-align: center;
         }
         .emblem-main {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px;
         }
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 22px;
             color: #8c0000;
+            margin: 5px 0;
         }
         .sub {
             font-size: 14px;
             font-style: italic;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        .links {
+        .links-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
-        .link-item {
+        /* Style nút danh mục lớn giống hệt ảnh mẫu */
+        .category-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 14px 20px;
+            background-color: #fcdcb4; /* Màu cam nhạt bo tròn giống ảnh */
+            border-radius: 30px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
-            transition: background-color 0.2s, transform 0.1s;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
         }
-        .link-item:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
+        .category-item:hover {
+            background-color: #fbc78d;
         }
         .emblem {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             margin-right: 15px;
+            flex-shrink: 0;
         }
         .zalo-icon {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             margin-right: 15px;
+            flex-shrink: 0;
         }
-        .sub-link-container {
-            display: none; /* Ẩn mặc định */
-            width: 100%;
-            padding-left: 20px;
-            box-sizing: border-box;
+        .category-text {
+            flex-grow: 1;
+            text-align: center;
+            margin-right: 28px; /* Cân bằng khoảng trống với icon bên trái */
         }
+        /* Khung chứa các link con xuất hiện khi bấm vào nút lớn */
+        .sub-links-box {
+            display: none; /* Mặc định ẩn đi */
+            flex-direction: column;
+            gap: 6px;
+            padding: 5px 15px 5px 30px;
+        }
+        /* Các nút con bên trong */
         .sub-link-item {
-            background-color: #fff;
-            border: 1px dashed #ccc;
-            margin-top: 5px;
+            display: block;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+        }
+        .sub-link-item:hover {
+            background-color: #f0f7ff;
         }
         footer {
             margin-top: 40px;
@@ -93,7 +110,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- SVG Quốc Huy chính -->
         <svg class="emblem-main" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="48" fill="#c8272a"/>
             <polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/>
@@ -102,64 +118,64 @@
         <h1>Hệ thống giải quyết TTHC cấp Bộ ngành</h1>
         <p class="sub">*Trang nội bộ xã Núi Cấm*</p>
 
-        <div class="links" id="linkList">
-            <!-- Link cha của Bộ Y Tế, khi bấm sẽ xổ ra link con -->
-            <div class="link-item parent-link" id="btnBoYTe" style="cursor: pointer;">
-                <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
-                <span>BỘ Y TẾ ▾</span>
-            </div>
+        <div class="links-container">
             
-            <!-- Khung chứa 3 link con của Bộ Y Tế -->
-            <div class="sub-link-container" id="subContainerBoYTe">
-                <a href="https://motcua.moh.gov.vn/" target="_blank" class="link-item sub-link-item">
-                    <span>Hệ thống Một Cửa</span>
-                </a>
-                <a href="https://dvc.moh.gov.vn/" target="_blank" class="link-item sub-link-item">
-                    <span>Cổng Dịch Vụ Công</span>
-                </a>
-                <a href="https://csdl.moh.gov.vn/" target="_blank" class="link-item sub-link-item">
-                    <span>Cơ Sở Dữ Liệu</span>
-                </a>
+            <div class="category-item" onclick="toggleMenu('boyte')">
+                <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
+                <div class="category-text">BỘ Y TẾ ▾</div>
+            </div>
+            <div class="sub-links-box" id="boyte">
+                <a href="https://motcua.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Hệ thống Một Cửa</a>
+                <a href="https://dvc.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Cổng Dịch Vụ Công</a>
+                <a href="https://csdl.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Cơ Sở Dữ Liệu</a>
             </div>
 
-            <!-- Các nút đơn bình thường khác -->
-            <a href="https://motcua.moj.gov.vn/" target="_blank" class="link-item">
+            <div class="category-item" onclick="toggleMenu('botuphap')">
                 <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
-                <span>BỘ TƯ PHÁP</span>
-            </a>
-            <a href="https://bcth.thanhtra.gov.vn/" target="_blank" class="link-item">
+                <div class="category-text">BỘ TƯ PHÁP ▾</div>
+            </div>
+            <div class="sub-links-box" id="botuphap">
+                <a href="https://motcua.moj.gov.vn/" target="_blank" class="sub-link-item">🔗 Hệ thống Một Cửa Bộ Tư Pháp</a>
+            </div>
+
+            <div class="category-item" onclick="toggleMenu('thanhtra')">
                 <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
-                <span>THANH TRA CHÍNH PHỦ</span>
-            </a>
-            <a href="#" target="_blank" class="link-item">
+                <div class="category-text">THANH TRA CHÍNH PHỦ ▾</div>
+            </div>
+            <div class="sub-links-box" id="thanhtra">
+                <a href="https://bcth.thanhtra.gov.vn/" target="_blank" class="sub-link-item">🔗 Trang Thông Tin Báo Cáo</a>
+            </div>
+
+            <div class="category-item" onclick="toggleMenu('congthuong')">
                 <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
-                <span>BỘ CÔNG THƯƠNG</span>
-            </a>
-            <a href="#" target="_blank" class="link-item">
-                <svg class="emblem" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#c8272a"/><polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/></svg>
-                <span>BỘ GIÁO DỤC VÀ ĐÀO TẠO</span>
-            </a>
-            <a href="#" target="_blank" class="link-item">
+                <div class="category-text">BỘ CÔNG THƯƠNG ▾</div>
+            </div>
+            <div class="sub-links-box" id="congthuong">
+                <a href="#" target="_blank" class="sub-link-item">🔗 (Chưa cấu hình liên kết)</a>
+            </div>
+
+            <div class="category-item" onclick="toggleMenu('zaloyte')">
                 <svg class="zalo-icon" viewBox="0 0 24 24" fill="#0068ff"><path d="M12 2C6.48 2 2 5.58 2 10c0 2.49 1.4 4.7 3.66 6.07-.15.56-.54 1.95-.62 2.27-.13.48.16.45.34.33.15-.1.2.4-.44 1.34-1.46 1.15-2.6 1.4-2.82.04-.08-.43-.53-1.84-.71-2.45C3.33 16.32 2 13.3 2 10c0-4.42 4.48-8 10-8s10 3.58 10 8-4.48 8-10 8c-.6 0-1.18-.04-1.74-.13-.78.68-1.92 1.4-3.15 1.7-.22.05-.4-.12-.3-.32.32-.62.83-1.57.94-2.18C3.76 17.5 2.5 15 2.5 12c0-5.52 4.25-10 9.5-10z"/></svg>
-                <span>Group Zalo BỘ Y TẾ An Giang</span>
-            </a>
+                <div class="category-text">GROUP ZALO BỘ Y TẾ (AN GIANG) ▾</div>
+            </div>
+            <div class="sub-links-box" id="zaloyte">
+                <a href="https://zalo.me/g/pkgcgl747" target="_blank" class="sub-link-item">💬 Tham gia nhóm nội bộ</a>
+            </div>
+
         </div>
 
         <footer>© 2026 – Trang liên kết nội bộ</footer>
     </div>
 
-    <!-- Đoạn JavaScript xử lý logic ẩn hiện menu -->
     <script>
-        document.getElementById('btnBoYTe').addEventListener('click', function() {
-            var container = document.getElementById('subContainerBoYTe');
-            if (container.style.display === 'block') {
-                container.style.display = 'none'; // Đang hiện thì ẩn đi
+        function toggleMenu(id) {
+            var menu = document.getElementById(id);
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
             } else {
-                container.style.display = 'block'; // Đang ẩn thì hiện lên
+                menu.style.display = "flex";
             }
-        });
+        }
     </script>
-</body>
-</html>
 </body>
 </html>
