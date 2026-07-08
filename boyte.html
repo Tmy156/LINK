@@ -12,6 +12,14 @@
         .sub-link-item { display: block; padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 30px; text-decoration: none; color: #0066cc; font-weight: bold; }
         .sub-link-item:hover { background-color: #f0f7ff; }
         .back-btn { display: inline-block; margin-top: 30px; color: #666; text-decoration: none; font-size: 14px; }
+        /* Đoạn code này giúp icon ảnh nhỏ gọn, thẳng hàng với chữ */
+.btn-icon {
+    width: 22px;         /* Chiều rộng ảnh */
+    height: 22px;        /* Chiều cao ảnh */
+    margin-right: 12px;   /* Khoảng cách giữa ảnh và chữ */
+    vertical-align: middle; /* Giúp ảnh nằm thẳng hàng dọc với chữ */
+    object-fit: contain;
+}
     </style>
 </head>
 <body>
@@ -19,9 +27,9 @@
         <h1>DANH SÁCH LIÊN KẾT BỘ Y TẾ</h1>
         
         <div class="links-container">
-           <a href="https://motcua.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Hệ thống Một Cửa</a>
-                <a href="https://dvcbtxh.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Cổng Dịch Vụ Công Bảo Trợ Xã Hội (MOLISA)</a>
-                <a href="https://nguoikhuyettat.moh.gov.vn/" target="_blank" class="sub-link-item">🔗 Cơ Sở Dữ Liệu Người Khuyết tật</a>
+           <a href="https://motcua.moh.gov.vn/" target="_blank" class="sub-link-item"><img src="BO Y TE.png" class="btn-icon"> Hệ thống Một Cửa</a>
+                <a href="https://dvcbtxh.moh.gov.vn/" target="_blank" class="sub-link-item"><img src="BO Y TE.png" class="btn-icon"> Cổng Dịch Vụ Công Bảo Trợ Xã Hội (MOLISA)</a>
+                <a href="https://nguoikhuyettat.moh.gov.vn/" target="_blank" class="sub-link-item"><img src="BO Y TE.png" class="btn-icon"> Cơ Sở Dữ Liệu Người Khuyết tật</a>
         </div>
 
         <a href="index.html" class="back-btn">⬅ Quay lại trang chủ</a>
