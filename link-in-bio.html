@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ thống giải quyết TTHC cấp Bộ ngành</title>
+<style>
+  :root{
+    --bg-top:#fdf1de;
+    --bg-bottom:#fbe3c8;
+    --pill:#fbd9b4;
+    --pill-hover:#f8c68e;
+    --text:#3a2a1a;
+    --gold:#d4a017;
+    --red:#c8272a;
+    --sub:#7a6a55;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:linear-gradient(180deg,var(--bg-top) 0%,var(--bg-bottom) 100%);
+    display:flex;
+    justify-content:center;
+    padding:48px 16px 80px;
+    color:var(--text);
+  }
+
+  .page{
+    width:100%;
+    max-width:620px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+  }
+
+  .emblem{
+    width:110px;
+    height:110px;
+    margin-bottom:18px;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+  }
+
+  h1{
+    font-size:22px;
+    font-weight:700;
+    text-align:center;
+    margin:0 0 6px;
+    letter-spacing:0.2px;
+  }
+
+  .sub{
+    font-size:15px;
+    color:var(--sub);
+    text-align:center;
+    margin:0 0 32px;
+    font-style:italic;
+  }
+
+  .links{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .link-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--pill);
+    border-radius:999px;
+    padding:14px 20px;
+    text-decoration:none;
+    color:var(--text);
+    font-weight:700;
+    font-size:15px;
+    text-align:center;
+    justify-content:center;
+    position:relative;
+    transition:background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow:0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .link-item:hover{
+    background:var(--pill-hover);
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(180,110,30,0.25);
+  }
+
+  .link-item:active{
+    transform:translateY(0);
+  }
+
+  .icon{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    position:absolute;
+    left:14px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    overflow:hidden;
+  }
+
+  .icon svg{ width:26px; height:26px; }
+
+  .icon.zalo{ background:#0068ff; }
+  .icon.zalo svg{ width:20px; height:20px; fill:#fff; }
+
+  footer{
+    margin-top:40px;
+    font-size:12.5px;
+    color:var(--sub);
+    text-align:center;
+  }
+
+  @media (max-width:480px){
+    .emblem{ width:90px; height:90px; }
+    h1{ font-size:18px; }
+    .link-item{ font-size:13.5px; padding:12px 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Quốc huy (đơn giản hoá) -->
+    <svg class="emblem" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="#c8272a"/>
+      <polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44"
+               fill="#f4c430"/>
+    </svg>
+
+    <h1>Hệ thống giải quyết TTHC cấp Bộ ngành</h1>
+    <p class="sub">*Trang nội bộ tỉnh An Giang*</p>
+
+    <div class="links" id="linkList">
+      <!-- Các link được render bằng JS từ mảng dữ liệu bên dưới -->
+    </div>
+
+    <footer>© 2026 – Trang liên kết nội bộ</footer>
+  </div>
+
+<script>
+  // Mỗi mục: { title, url, type: 'emblem' | 'zalo' }
+  // -> Sửa "url" thành đường link thật của bạn, thêm/bớt mục tuỳ ý.
+  const items = [
+    { title: "BỘ Y TẾ",                         url: "#", type: "emblem" },
+    { title: "BỘ NỘI VỤ",                        url: "#", type: "emblem" },
+    { title: "BỘ XÂY DỰNG",                      url: "#", type: "emblem" },
+    { title: "BỘ CÔNG THƯƠNG",                   url: "#", type: "emblem" },
+    { title: "BỘ GIÁO DỤC VÀ ĐÀO TẠO",           url: "#", type: "emblem" },
+    { title: "BỘ KHOA HỌC VÀ CÔNG NGHỆ",         url: "#", type: "emblem" },
+    { title: "BỘ NÔNG NGHIỆP VÀ MÔI TRƯỜNG",     url: "#", type: "emblem" },
+    { title: "GROUP ZALO BỘ Y TẾ (NỘI BỘ TỈNH AN GIANG)", url: "#", type: "zalo" },
+  ];
+
+  const emblemIconSVG = `
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="#c8272a"/>
+      <polygon points="50,20 58,44 84,44 62,58 70,82 50,68 30,82 38,58 16,44 42,44" fill="#f4c430"/>
+    </svg>`;
+
+  const zaloIconSVG = `
+    <svg viewBox="0 0 48 48">
+      <path d="M24 4C12.95 4 4 12.13 4 22.2c0 5.6 2.9 10.6 7.5 13.9-.25 1.9-1.1 5-1.3 5.9-.2.9.5 1.4 1.3 1 .6-.3 4.7-2.9 6.6-4.1 1.9.4 3.9.6 5.9.6 11.05 0 20-8.13 20-18.2C44 12.13 35.05 4 24 4z"/>
+    </svg>`;
+
+  const list = document.getElementById('linkList');
+
+  items.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'link-item';
+    a.href = item.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+
+    const icon = document.createElement('span');
+    icon.className = 'icon' + (item.type === 'zalo' ? ' zalo' : '');
+    icon.innerHTML = item.type === 'zalo' ? zaloIconSVG : emblemIconSVG;
+
+    const label = document.createElement('span');
+    label.textContent = item.title;
+
+    a.appendChild(icon);
+    a.appendChild(label);
+    list.appendChild(a);
+  });
+</script>
+</body>
+</html>
