@@ -6,7 +6,7 @@
     <title>Hệ thống giải quyết TTHC cấp Bộ ngành</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #fef0db;
             color: #333;
             display: flex;
@@ -19,7 +19,6 @@
         .container {
             width: 100%;
             max-width: 600px;
-            background-color: transparent;
             text-align: center;
         }
         .emblem-main {
@@ -43,12 +42,12 @@
             flex-direction: column;
             gap: 12px;
         }
-        /* Style nút danh mục lớn giống hệt ảnh mẫu */
+        /* Nút lớn màu cam bo tròn giống ảnh mẫu lnk.bio */
         .category-item {
             display: flex;
             align-items: center;
             padding: 14px 20px;
-            background-color: #fcdcb4; /* Màu cam nhạt bo tròn giống ảnh */
+            background-color: #fcdcb4;
             border-radius: 30px;
             text-decoration: none;
             color: #333;
@@ -56,18 +55,11 @@
             font-size: 15px;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.2s;
         }
         .category-item:hover {
             background-color: #fbc78d;
         }
-        .emblem {
-            width: 28px;
-            height: 28px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .zalo-icon {
+        .emblem, .zalo-icon {
             width: 28px;
             height: 28px;
             margin-right: 15px;
@@ -76,26 +68,26 @@
         .category-text {
             flex-grow: 1;
             text-align: center;
-            margin-right: 28px; /* Cân bằng khoảng trống với icon bên trái */
+            margin-right: 28px;
         }
-        /* Khung chứa các link con xuất hiện khi bấm vào nút lớn */
+        /* Khung chứa các link con xuất hiện khi bấm vào */
         .sub-links-box {
-            display: none; /* Mặc định ẩn đi */
+            display: none; /* Mặc định ẩn, bấm nút mới hiện */
             flex-direction: column;
             gap: 6px;
             padding: 5px 15px 5px 30px;
         }
-        /* Các nút con bên trong */
+        /* Nút con bên trong */
         .sub-link-item {
             display: block;
-            padding: 10px 15px;
+            padding: 12px 15px;
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 20px;
             text-decoration: none;
             color: #0066cc;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: bold;
             text-align: left;
         }
         .sub-link-item:hover {
@@ -151,7 +143,7 @@
                 <div class="category-text">BỘ CÔNG THƯƠNG ▾</div>
             </div>
             <div class="sub-links-box" id="congthuong">
-                <a href="#" target="_blank" class="sub-link-item">🔗 (Chưa cấu hình liên kết)</a>
+                <a href="#" class="sub-link-item">🔗 (Chưa cấu hình liên kết)</a>
             </div>
 
             <div class="category-item" onclick="toggleMenu('zaloyte')">
@@ -170,10 +162,10 @@
     <script>
         function toggleMenu(id) {
             var menu = document.getElementById(id);
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
+            if (menu.style.display === "none" || menu.style.display === "") {
                 menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
             }
         }
     </script>
